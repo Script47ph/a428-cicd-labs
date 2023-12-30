@@ -7,13 +7,13 @@ node {
         stage('Test') {
             sh './jenkins/scripts/test.sh'
         }
-        // stage('Manual Approval'){
-        //     input message: 'Lanjutkan ke tahap Deploy? (Klik "Proceed" untuk mengakhiri)' 
-        // }
-        // stage('Deploy') {
-        //     sh './jenkins/scripts/deliver.sh' 
-        //     sh 'sleep 60'
-        //     sh './jenkins/scripts/kill.sh'
-        // }
+        stage('Manual Approval'){
+            input message: 'Lanjutkan ke tahap Deploy? (Klik "Proceed" untuk mengakhiri)' 
+        }
+        stage('Deploy') {
+            sh './jenkins/scripts/deliver.sh' 
+            sh 'sleep 60'
+            sh './jenkins/scripts/kill.sh'
+        }
     }
 }
